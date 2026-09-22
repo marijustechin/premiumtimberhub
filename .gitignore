@@ -1,0 +1,35 @@
+# Local environments and operating-system noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# WordPress and LocalWP runtime data
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backups/
+wp-content/updraft/
+Local Sites/
+local/
+
+# Database exports and full-site backups
+*.sql
+*.sql.gz
+*.sqlite
+*.wpress
+*.tar.gz
+*.bak
+backups/
+
+# Build/editor artefacts
+node_modules/
+.idea/
+.vscode/
+dist/
