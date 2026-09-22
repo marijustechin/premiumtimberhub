@@ -1,0 +1,690 @@
+/*
+Theme Name: Premium Timber Hub Block
+Theme URI: https://premiumtimberhub.eu
+Author: Premium Timber Hub
+Author URI: https://premiumtimberhub.eu
+Description: Custom block theme for Premium Timber Hub — a single-page B2B website for West African timber export. Built with native Gutenberg blocks and full site editing.
+Requires at least: 6.7
+Tested up to: 7.0
+Requires PHP: 7.4
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: premiumtimberhub
+Tags: custom-colors, custom-menu, custom-logo, featured-images, block-styles, accessibility-ready, one-column
+*/
+
+/*
+ * Progressive enhancement to reduce widows and orphans
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+caption,
+figcaption,
+p {
+	text-wrap: pretty;
+}
+
+/* Global focus-visible ring */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+	outline: 2px solid var(--wp--preset--color--primary);
+	outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+.wp-block-navigation .wp-block-navigation-item__content:hover {
+	text-decoration: none;
+	color: var(--wp--preset--color--primary);
+}
+
+.wp-block-navigation .wp-block-navigation-item__content[aria-current="page"],
+.wp-block-navigation .wp-block-navigation-item__content[aria-current="true"] {
+	color: var(--wp--preset--color--primary);
+}
+
+/* Header "Request a Quote" CTA button (last nav item) */
+.wp-block-navigation:not(.footer-nav)
+	.wp-block-navigation-item:last-child
+	.wp-block-navigation-item__content {
+	border: 2px solid var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--primary);
+	padding: 0.45rem 1.25rem;
+	border-radius: 50px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+.wp-block-navigation:not(.footer-nav)
+	.wp-block-navigation-item:last-child
+	.wp-block-navigation-item__content:hover {
+	background-color: var(--wp--preset--color--primary);
+	color: #ffffff;
+}
+
+/* ==========================================================================
+   Global Button Enhancements
+   ========================================================================== */
+.wp-block-button__link {
+	transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.wp-block-button__link:hover {
+	transform: translateY(-1px);
+}
+
+.wp-block-button__link:active {
+	transform: translateY(0);
+}
+
+/* ==========================================================================
+   Trust bar icons
+   ========================================================================== */
+.trust-bar-item svg {
+	width: 1.5em;
+	height: 1.5em;
+	flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Product / species cards
+   ========================================================================== */
+.species-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: 12px;
+	background-color: #fff;
+	overflow: hidden;
+	box-shadow: 0 1px 3px rgba(28, 25, 23, 0.06);
+	transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.species-card:hover {
+	box-shadow: 0 12px 32px rgba(28, 25, 23, 0.12);
+	transform: translateY(-4px);
+}
+
+.species-card .species-card-image {
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	background-color: var(--wp--preset--color--background);
+}
+
+.species-card .species-card-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.species-card .species-card-body {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	gap: 0.5rem;
+}
+
+.species-card .species-spec-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.species-card .species-spec-list li {
+	font-size: 0.9rem;
+	line-height: 1.5;
+	padding-left: 1.1rem;
+	position: relative;
+}
+
+.species-card .species-spec-list li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.55em;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background-color: var(--wp--preset--color--accent);
+}
+
+.species-card .species-spec-list li strong {
+	color: var(--wp--preset--color--contrast);
+	font-weight: 600;
+}
+
+/* ==========================================================================
+   Process steps
+   ========================================================================== */
+.process-step {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	height: 100%;
+}
+
+.process-step .step-number {
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	background-color: var(--wp--preset--color--primary);
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	font-family: var(--wp--preset--font-family--heading);
+	font-size: 1.1rem;
+	flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Shipping / image grid
+   ========================================================================== */
+.shipping-image figure,
+.shipping-image img {
+	width: 100%;
+}
+
+.shipping-image img {
+	display: block;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+.pth-faq details {
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: 10px;
+	background-color: #fff;
+	padding: 0;
+	overflow: hidden;
+}
+
+.pth-faq details + details {
+	margin-top: 0.75rem;
+}
+
+.pth-faq summary {
+	cursor: pointer;
+	padding: 1rem 1.25rem;
+	font-weight: 600;
+	list-style: none;
+	position: relative;
+	padding-right: 3rem;
+}
+
+.pth-faq summary::-webkit-details-marker {
+	display: none;
+}
+
+.pth-faq summary::after {
+	content: "+";
+	position: absolute;
+	right: 1.25rem;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.4rem;
+	font-weight: 400;
+	line-height: 1;
+	color: var(--wp--preset--color--primary);
+}
+
+.pth-faq details[open] summary::after {
+	content: "−";
+}
+
+.pth-faq details .pth-faq-answer {
+	padding: 0 1.25rem 1.25rem;
+}
+
+.pth-faq details .pth-faq-answer p {
+	margin: 0 0 0.5rem;
+}
+
+.pth-faq details .pth-faq-answer p:last-child {
+	margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Contact / RFQ form
+   ========================================================================== */
+.pth-enquiry-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.1rem;
+}
+
+.pth-enquiry-form .pth-form-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+}
+
+.pth-enquiry-form .pth-form-field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+}
+
+.pth-enquiry-form .pth-form-field--full {
+	grid-column: 1 / -1;
+}
+
+.pth-enquiry-form label {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--wp--preset--color--contrast);
+}
+
+.pth-enquiry-form label .required {
+	color: #b45309;
+}
+
+.pth-enquiry-form .pth-field-hint {
+	font-size: 0.8rem;
+	color: var(--wp--preset--color--text-muted);
+}
+
+.pth-enquiry-form input[type="text"],
+.pth-enquiry-form input[type="email"],
+.pth-enquiry-form input[type="tel"],
+.pth-enquiry-form input[type="file"],
+.pth-enquiry-form select,
+.pth-enquiry-form textarea {
+	width: 100%;
+	padding: 12px 14px;
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: 8px;
+	font-family: var(--wp--preset--font-family--body, sans-serif);
+	font-size: 1rem;
+	color: var(--wp--preset--color--contrast);
+	background-color: #fff;
+	box-sizing: border-box;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pth-enquiry-form input:focus,
+.pth-enquiry-form select:focus,
+.pth-enquiry-form textarea:focus {
+	border-color: var(--wp--preset--color--primary);
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(34, 65, 47, 0.15);
+}
+
+.pth-enquiry-form textarea {
+	resize: vertical;
+	min-height: 110px;
+}
+
+.pth-enquiry-form .pth-form-consent {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.6rem;
+	font-size: 0.9rem;
+}
+
+.pth-enquiry-form .pth-form-consent input {
+	width: auto;
+	margin-top: 0.2rem;
+}
+
+.pth-enquiry-form .pth-form-hp {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	opacity: 0;
+}
+
+.pth-enquiry-form .pth-form-submit button {
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 1.05rem;
+	padding: 14px 32px;
+	border: none;
+	border-radius: 50px;
+	transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.pth-enquiry-form .pth-form-submit button:hover {
+	transform: translateY(-1px);
+}
+
+.pth-enquiry-form .pth-form-submit button:active {
+	transform: scale(0.98);
+}
+
+.pth-form-success {
+	background-color: #ecfdf5;
+	border: 1px solid #6ee7b7;
+	border-radius: 10px;
+	padding: 2rem;
+}
+
+.pth-form-success h3 {
+	color: var(--wp--preset--color--primary);
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+}
+
+.pth-form-success p {
+	color: #374151;
+	margin: 0;
+}
+
+.pth-form-errors {
+	background-color: #fef2f2;
+	border: 1px solid #fecaca;
+	border-radius: 10px;
+	padding: 1rem 1.25rem;
+	margin-bottom: 0.5rem;
+}
+
+.pth-form-errors p {
+	color: #b91c1c;
+	margin: 0;
+	font-size: 0.9rem;
+}
+
+.pth-form-errors p + p {
+	margin-top: 0.25rem;
+}
+
+/* Contact info blocks */
+.pth-contact-item {
+	display: flex;
+	gap: 0.75rem;
+	align-items: flex-start;
+}
+
+.pth-contact-item svg {
+	width: 1.2em;
+	height: 1.2em;
+	flex-shrink: 0;
+	margin-top: 0.15em;
+	color: var(--wp--preset--color--primary);
+}
+
+/* ==========================================================================
+   Footer navigation overrides
+   ========================================================================== */
+.site-footer .wp-block-navigation-item__content,
+.site-footer .wp-block-navigation-item:last-child .wp-block-navigation-item__content {
+	color: var(--wp--preset--color--dark) !important;
+	border: none !important;
+	border-radius: 0 !important;
+	padding: 0 !important;
+	font-weight: 400 !important;
+	background-color: transparent !important;
+	transition: none !important;
+}
+
+.site-footer .wp-block-navigation-item__content:hover,
+.site-footer .wp-block-navigation-item:last-child .wp-block-navigation-item__content:hover {
+	color: var(--wp--preset--color--primary) !important;
+	text-decoration: underline !important;
+}
+
+/* ==========================================================================
+   Cover block hero adjustments
+   ========================================================================== */
+.home .wp-block-cover:first-of-type {
+	margin-top: 0 !important;
+}
+
+/* Remove block-gap between sticky header and content */
+.home #main-content,
+.home main {
+	margin-top: 0;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 781px) {
+	.pth-enquiry-form .pth-form-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open {
+		background-color: #ffffff;
+		padding: 2rem 1.5rem;
+	}
+
+	/* Mobile horizontal gutter for section content (backgrounds stay full-bleed) */
+	.alignfull > .is-layout-constrained,
+	.alignfull > .alignwide {
+		padding-left: 1.25rem;
+		padding-right: 1.25rem;
+	}
+
+	/* Header content gutter */
+	.wp-site-blocks > .wp-block-template-part:first-child > .wp-block-group {
+		padding-left: 1.25rem;
+		padding-right: 1.25rem;
+	}
+}
+
+/* Tablet + mid-size screens: horizontal gutter for section content until the
+   constrained layout (contentSize 1440px) leaves natural side margin (>=1480px). */
+@media (min-width: 782px) and (max-width: 1479px) {
+	.alignfull > .is-layout-constrained,
+	.alignfull > .alignwide {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+
+	.wp-site-blocks > .wp-block-template-part:first-child > .wp-block-group {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.wp-block-cover h1,
+	.wp-block-cover .wp-block-heading {
+		font-size: var(--wp--preset--font-size--xx-large) !important;
+	}
+
+	.wp-block-cover p {
+		font-size: var(--wp--preset--font-size--medium) !important;
+	}
+}
+
+/* ==========================================================================
+   CookieYes consent banner — brand alignment
+   ========================================================================== */
+.cky-consent-container .cky-consent-bar {
+	border-radius: 12px;
+}
+
+.cky-btn,
+.cky-notice-des a.cky-policy {
+	border-radius: 50px;
+}
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+/* Keep anchored sections clear of the sticky header */
+[id] {
+	scroll-margin-top: 90px;
+}
+
+/* ==========================================================================
+   Sticky header
+   ========================================================================== */
+.wp-site-blocks > .wp-block-template-part:first-child {
+	position: sticky;
+	top: 0;
+	z-index: 999;
+}
+
+/* ==========================================================================
+   Full-bleed blocks (alignfull)
+   ========================================================================== */
+.alignfull {
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	max-width: 100vw;
+	width: auto;
+}
+
+/* Constrain alignwide blocks that sit directly inside full-bleed sections */
+.alignfull > .alignwide {
+	max-width: var(--wp--style--global--wide-size);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Keep long-form legal pages readable */
+body.page:not(.home) #main-content {
+	max-width: 820px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ==========================================================================
+   Back to Top Button
+   ========================================================================== */
+.pth-to-top {
+	position: fixed;
+	right: 1.25rem;
+	bottom: 1.25rem;
+	z-index: 20;
+	width: 48px;
+	height: 48px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid #ffffff;
+	border-radius: 50%;
+	background-color: var(--wp--preset--color--primary);
+	color: #ffffff;
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 1;
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(8px);
+	transition:
+		opacity 0.2s ease,
+		visibility 0.2s ease,
+		transform 0.2s ease,
+		background-color 0.2s ease,
+		color 0.2s ease;
+}
+
+.pth-to-top.is-visible {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.pth-to-top:hover,
+.pth-to-top:focus-visible {
+	background-color: #ffffff;
+	color: var(--wp--preset--color--primary);
+	border-color: var(--wp--preset--color--primary);
+	outline: none;
+}
+
+.pth-to-top:focus-visible {
+	box-shadow: 0 0 0 3px rgba(34, 65, 47, 0.2);
+}
+
+@media (max-width: 600px) {
+	.pth-to-top {
+		right: 0.75rem;
+		bottom: 0.75rem;
+		width: 44px;
+		height: 44px;
+		font-size: 1.25rem;
+	}
+}
+
+/* ==========================================================================
+   Wordmark / logo
+   ========================================================================== */
+.pth-wordmark {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	text-decoration: none;
+	color: var(--wp--preset--color--contrast);
+}
+
+.pth-wordmark svg {
+	width: 34px;
+	height: 34px;
+	flex-shrink: 0;
+}
+
+.pth-wordmark__text {
+	font-family: var(--wp--preset--font-family--heading);
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 1.1;
+	letter-spacing: -0.01em;
+	color: var(--wp--preset--color--contrast);
+	white-space: nowrap;
+}
+
+a.pth-wordmark:hover .pth-wordmark__text {
+	color: var(--wp--preset--color--primary);
+}
+
+/* WhatsApp icon in header */
+.pth-whatsapp {
+	display: inline-flex;
+	align-items: center;
+	color: var(--wp--preset--color--primary);
+	transition: color 0.2s ease;
+}
+
+.pth-whatsapp:hover {
+	color: var(--wp--preset--color--accent);
+}
+
+@media (max-width: 600px) {
+	.pth-wordmark__text {
+		font-size: 1.05rem;
+	}
+}
